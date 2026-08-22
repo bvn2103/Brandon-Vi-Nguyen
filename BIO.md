@@ -1,6 +1,6 @@
 # Brandon Nguyen
 
-Brandon Nguyen has never followed the path most people expect. At eighteen, he joined the United States Air Force, serving four years in Cyber Operations and Executive Communications, where he provided round the clock network and cyber support for the Secretary of the Air Force and senior military and political leadership. That early commitment to service set the tone for everything that came after.
+Brandon Nguyen has never followed the path most people expect. At nineteen, he joined the United States Air Force, serving four years in Cyber Operations and Executive Communications, where he provided round the clock network and cyber support for the Secretary of the Air Force and senior military and political leadership. That early commitment to service set the tone for everything that came after.
 
 When his enlistment ended, Brandon didn't step back from difficult work, he stepped toward it. He took a position as a Medical Support Technician at NewYork-Presbyterian Hospital during the height of the COVID-19 pandemic, working twelve hour shifts in the SICU, ICU, and CCU, monitoring patients and standing as the connection between overwhelmed medical staff and families desperate for updates. From there he moved to Washington, DC, as a Congressional Aide Intern, focusing his work on improving casework and policy outcomes for veteran constituents.
 
