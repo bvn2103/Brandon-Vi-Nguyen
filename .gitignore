@@ -1,19 +1,52 @@
-# Office and OS temp files
+# Office lock and temporary files
+# Locks created when Office files are open; temp files from unsaved edits
 ~$*.xlsx
 ~$*.xlsm
 ~$*.docx
 ~$*.pptx
-.DS_Store
-Thumbs.db
-
-# Editor backups
 *.tmp
-*.bak
+
+# macOS system and metadata files
+# Finder metadata, DS_Store, and temporary macOS artifacts
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
 *~
 
-# Never publish
+# Windows system and metadata files
+# Windows thumbnail cache and system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor backup and temporary files
+# Backup files from editors (vim, nano, emacs, etc.)
+*.bak
+*~
+.~lock.*
+
+# Credentials and sensitive configuration
+# Never commit environment variables, API keys, or private credentials
 .env
+.env.local
+.env.*.local
 *.key
 *.pem
+*.p12
+*.pfx
 secrets/
 private/
+credentials/
+.aws/
+.ssh/
+
+# IDE and editor configuration (optional - uncomment if needed)
+# .vscode/
+# .idea/
+# *.swp
+
+# Dependency and build artifacts (optional - uncomment if needed)
+# node_modules/
+# venv/
+# __pycache__/
