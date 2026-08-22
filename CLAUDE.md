@@ -1,3 +1,3 @@
 # CLAUDE
 
-This file contains information about Claude.
+For AI collaboration conventions and instructions, see [AGENTS.md](./AGENTS.md).
