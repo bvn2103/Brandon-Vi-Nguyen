@@ -10,7 +10,7 @@ That same drive led him to law enforcement, where he worked as a Police Officer 
 
 Brandon is currently continuing his education as a Distance Learning Executive MBA student at the Shidler College of Business, University of Hawaii, part of Cohort 8, carrying his non traditional path forward into the next stage of his career.
 
-Brandon speaks English and Vietnamese, and he carries the same instinct for service into how he spends his time outside of work, whether that's fishing, hiking, sailing, or Muay Thai.
+Brandon speaks English and Vietnamese, and he carries the same instinct for service into how he spends his time outside of work, whether that's fishing, hiking, sailing, Muay Thai, or golfing.
 
 ---
 
