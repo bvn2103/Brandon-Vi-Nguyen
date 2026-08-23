@@ -1,1 +1,3 @@
-Pre-work planning: hypothesis, scope, deliverables, success criteria.
+# Briefs
+
+Pre-work scope and hypothesis documents.

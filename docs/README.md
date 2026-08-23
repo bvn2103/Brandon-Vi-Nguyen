@@ -1,1 +1,3 @@
-Documentation: briefs, decisions, and project records.
+# Documentation
+
+Project briefs, decisions, and reference materials.

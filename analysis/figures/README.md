@@ -1,1 +1,3 @@
-Charts, models, visualizations, and supporting outputs.
+# Figures
+
+Visualizations and diagrams generated during analysis.

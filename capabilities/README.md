@@ -1,1 +1,3 @@
-Mature capabilities with full documentation: spec, implementation, and supporting analysis.
+# Capabilities
+
+Mature capability specs and implementation.

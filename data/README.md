@@ -1,1 +1,3 @@
-Source materials with attribution, access dates, and provenance tracking.
+# Data
+
+Source materials with dates and attribution.
