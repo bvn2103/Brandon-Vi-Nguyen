@@ -1,4 +1,4 @@
-# Brandon Nguyen
+# Brandon Vi Nguyen
 
 ## Overview
 This repository documents my professional development, business analysis capabilities, and AI collaboration conventions. It serves as both a portfolio and a working knowledge base for strategic projects.
