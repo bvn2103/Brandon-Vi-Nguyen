@@ -1,6 +1,6 @@
-# Brandon Nguyen
+# Brandon Vi Nguyen
 
-Brandon Nguyen has never followed the path most people expect. He considers himself a non-traditional student of life. During his four years in the United States Air Force, serving in Cyber Operations and Executive Communications, he trained with the Air Force Honor Guard while providing round the clock network and cyber support for the Secretary of the Air Force and senior military and political leadership. That season of service was preparing him for a bid at the Air Force Academy, and at the last moment, he chose a different path, enrolling at Columbia University instead.
+Brandon Vi Nguyen has never followed the path most people expect. He considers himself a non-traditional student of life. During his four years in the United States Air Force, serving in Cyber Operations and Executive Communications, he trained with the Air Force Honor Guard while providing round the clock network and cyber support for the Secretary of the Air Force and senior military and political leadership. That season of service was preparing him for a bid at the Air Force Academy, and at the last moment, he chose a different path, enrolling at Columbia University instead.
 
 When his enlistment ended, Brandon didn't step back from difficult work, he stepped toward it. He took a position as a Medical Support Technician at NewYork-Presbyterian Hospital during the height of the COVID-19 pandemic, working twelve hour shifts in the SICU, ICU, and CCU, monitoring patients and standing as the connection between overwhelmed medical staff and families desperate for updates. From there he moved to Washington, DC, as a Congressional Aide Intern, focusing his work on improving casework and policy outcomes for veteran constituents.
 
