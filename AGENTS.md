@@ -6,7 +6,7 @@
 
 **Drafting:** Full access to `analysis/`, `data/`, `docs/`, and `capabilities/`. Create and edit freely.
 
-**Sensitive data:** Not a constraint. Use real data if needed.
+**Sensitive data:** Course case data is public and unrestricted. Nothing from professional work — client, market-sensitive, or law enforcement material — enters this repository or any prompt.
 
 **Logging:** Every session gets logged in `prompt-log.md`. Format: date, topic, task, outcome, reference.
 
