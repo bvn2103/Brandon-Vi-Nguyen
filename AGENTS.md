@@ -1,33 +1,38 @@
-# AGENTS
+# AI Collaboration Standards
 
-## How I Work With AI
+## Access
 
-**Explanation level:** One line. Skip it if the change is trivial.
+Drafting access to `/work/`, `/data/`, `/capabilities/`, `/.claude/`.
 
-**Drafting:** Full access to `analysis/`, `data/`, `docs/`, and `capabilities/`. Create and edit freely.
+No client data, market-sensitive information, or law enforcement material.
 
-**Sensitive data:** Course case data is public and unrestricted. Nothing from professional work — client, market-sensitive, or law enforcement material — enters this repository or any prompt.
+## Logging
 
-**Logging:** Every session gets logged in `prompt-log.md`. Format: date, topic, task, outcome, reference.
+Every session in `prompt-log.md`: date, topic, task, outcome, reference.
 
-## File Organization
+## Locations
 
-- `docs/briefs/` — Pre-work scope and hypothesis
-- `docs/decisions/` — Post-work findings and recommendations
-- `data/` — Source materials with dates and attribution
-- `analysis/` — Outputs, figures, models
-- `capabilities/` — Mature capability specs and implementation
-- `.claude/skills/` — Experimental work before promotion to `capabilities/`
+- `work/briefs/` — Pre-work hypothesis
+- `work/analysis/` — Post-work findings
+- `data/` — Sources with access dates
+- `capabilities/` — Mature specs
+- `/.claude/` — Experimental work
 
-## Documentation Standards
+## Tags
 
-- Markdown throughout
-- Tag claims: `[SUPPORTED]`, `[ASSUMPTION]`, `[REJECTED]`
-- Include source and access date for all data
-- Version work iteratively (v1.0, v1.1)
-- Cross-reference related docs
-- For rejected ideas: explain why and what was learned
+- `[SUPPORTED]` — Evidence-backed
+- `[ASSUMPTION]` — Stated assumptions
+- `[REJECTED]` — Discarded with reasoning
+
+## Standards
+
+- Markdown only
+- Source all data
+- Version iteratively (v1.0, v1.1)
+- Cross-reference related work
+- Explain rejected approaches
+- Direct language, no hedging
 
 ---
 
-*AI Disclosure: This document describes AI collaboration conventions.*
+*This document describes AI collaboration conventions.*
