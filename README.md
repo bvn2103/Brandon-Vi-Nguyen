@@ -1,28 +1,20 @@
 # Brandon Vi Nguyen
 
-## Overview
-This repository documents my professional development, business analysis capabilities, and AI collaboration conventions. It serves as both a portfolio and a working knowledge base for strategic projects.
+Professional portfolio and analysis work.
 
-## Index of Engagements
+## Structure
 
-### Capabilities
-- **Marginal Analysis** — Economic decision-making under constraints
-- [Add more as developed]
+- **[profile/](./profile/)** — Bio, resume, contact
+- **[work/](./work/)** — Briefs, analyses, findings
+- **[capabilities/](./capabilities/)** — Developed capabilities
+- **[data/](./data/)** — Source materials
+- **[.claude/](./.claude/)** — Experimental work
 
-### Documentation
-- **AGENTS.md** — AI collaboration conventions and protocols
-- **RESUME.md** — Professional background and skills
-- **prompt-log.md** — Log of significant AI-assisted sessions
+## Standards
 
-### Key Directories
-- `capabilities/` — Capability development with specs and analysis
-- `docs/briefs/` — Project scopes and hypotheses (before work)
-- `docs/decisions/` — Recommendations and findings (after work)
-- `data/` — Sourced inputs with provenance tracking
-- `analysis/figures/` — Findings and supporting charts
-- `.claude/skills/` — Personal sandbox for AI experimentation
+See [AGENTS.md](./AGENTS.md) for collaboration conventions.
+See [prompt-log.md](./prompt-log.md) for session history.
 
-## Getting Started
-1. Review [AGENTS.md](./AGENTS.md) for collaboration conventions
-2. Check [prompt-log.md](./prompt-log.md) for session records
-3. Explore `capabilities/` for detailed project work
+---
+
+*This repository was created and edited with AI assistance.*
