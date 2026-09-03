@@ -1,31 +1,39 @@
 <!-- PR TARGET: https://github.com/bvn2103/Brandon-Vi-Nguyen | Stage 1.1 (2.5 pts) -->
-# Stage 1.1 review — engagement brief
-
-**Not yet graded — the brief file is still the unfilled template. Held for revision; the deadline has not passed.**
+# Stage 1.1 review — engagement brief · **82 / 100** (B-) · 2.05 / 2.5 pts
 
 **Brief:** [`docs/briefs/perfect-competition-brief.md`](https://github.com/bvn2103/Brandon-Vi-Nguyen/blob/main/docs/briefs/perfect-competition-brief.md)
 
-> Your brief is committed at the right path, but every section is still the template's bracketed prompt — "[What's being decided, what's fixed, what's chosen, what limits it]" — and the frontmatter hypothesis reads "Your one-line hypothesis here." Nothing to grade yet, so nothing is recorded.
+> Re-graded 2026-09-02 against your rewrite. The previous 37 was a hold, not a grade, because the brief was about a mangosteen orchard rather than this case. You rewrote it for the right farm and kept everything that was already good about it. As promised, there is no penalty for the delay.
 
-### What to do
+| Criterion | Earned | Notes |
+|---|---|---|
+| Problem restated in your own voice | 26 / 30 | Up from 8. The case is all there now and it is accurate: 64 beds in four plots of 16, the 36-week season, $20,000 fixed, the farmer at $50,000 for 720 field hours, temporary workers at $25,000 for 1,440 hours each, and the three crops with prices, caps, labor hours, fertilizer, and rates. You also converted hours per bed-week into hours per bed-season — 90, 30, and 45 — which most people did not bother to do and which is what makes the labor argument checkable. Four points off because the middle of the section is the case table restated in prose, and because you never say what it costs to decide this badly. The season is planted once; that sentence belongs here. |
+| Hypothesis names a specific mix | 25 / 25 | Tomatoes 20, mesclun 20, carrots 11, 51 planted and 13 fallow, with the fallow beds explained rather than left over. Three integers, all inside their caps, summing under 64. That is exactly what this criterion asks for, and stating the fallow beds as a deliberate choice is the part most people miss. |
+| Economic mechanism | 14 / 25 | The engine is right and you state it correctly, exponent on q and all. Two arithmetic errors cost the points, and one of them contradicts your own prediction — see below. Up from 12 all the same, because the reasoning about why different escalation rates change the trade-off between crops as beds are added is sound and it is yours. |
+| Falsifiability and process | 17 / 20 | Up from 12, and this is the strongest section of the brief. Four conditions, each with a number, each naming the specific input it would indict rather than just saying the hypothesis failed. The second — mesclun staying under 5 beds despite the low escalation rate would mean its revenue or base hours are mis-specified — is the kind of condition that tells you where to look, not just that you were wrong. Three points off because the fourth rests on the labor figure that is wrong. Committed before any modeling, canonical path. |
+| **Final** | **82 / 100** | entered — hold lifted |
 
-The reason this stage exists, and the reason it is graded before the model: a prediction written before the model runs is falsifiable. The same sentence written afterwards is a summary of the output, and it teaches you nothing, because you can no longer tell "I understood the economics" from "I read the answer cell." Stage 3 asks you to compare what you predicted against what the model found — and that comparison cannot be reconstructed later. A wrong hypothesis, precisely reasoned, is worth as much as a correct one and considerably more than a lucky one.
+### The two numbers to fix, and why the second one matters most
 
-You scaffolded this correctly on 2026-08-22 and then moved on to the capability folder without coming back to it. The structure is right; the content is what is missing.
+First: the labor pool. You write "The farmer and temporary workers have fixed budgets (720 + 1,440 = 2,160 total hours)." There are up to four temporary workers at 1,440 hours each, which you say correctly two paragraphs earlier in your assumptions. The pool is 720 + 5,760 = 6,480 hours. Your fourth falsification condition then says the model fails "if total labor demand exceeds 2,160 hours even when hiring all four temporary workers to their 1,440-hour cap," which contradicts itself inside one sentence — four workers at 1,440 is 5,760 on its own.
 
-- State the problem in your own words. Half a page. What the farm is deciding (how many beds of tomatoes, carrots, and mesclun), what is fixed (the 36-week season, $20,000 of fixed costs, the prices, the per-crop caps of 20/20/30, the farmer's 720 field hours, up to four temp workers at 1,440 hours each), what you choose, and what limits the choice. Restating is not copying — if you cannot say it differently from the case README, you do not have it yet.
+Second: "planting 20 tomato beds requires 90 × 20 × 1.1^20 = 5,670 hours." Run it again. 1.1 to the twentieth is about 6.7275, and 90 × 20 × 6.7275 is about 12,110 hours, not 5,670. The conclusion you draw from it — that 20 tomato beds is far beyond the labor available — is right, and it is more dramatically right than you realized.
 
-- Name a specific mix. Real bed counts: "I expect X tomato beds, Y carrot beds, Z mesclun beds." Not a range, not percentages, not "a balanced mix."
+That is the part worth sitting with. Your own arithmetic says 20 tomato beds cannot be planted, and your hypothesis puts tomatoes at 20. A brief whose mechanism argues against its own prediction is the one thing Stage 3 cannot recover from, because there is no honest way to write the comparison.
 
-- Say why, using the numbers the case gives you. The mechanism that decides this case is diminishing returns: labor hours for q beds of a crop are q x hours-per-week-per-bed x 36 x (1 + rate)^q, where the rate is 10% a bed for tomatoes, 2.5% for carrots, and 1.25% for mesclun. That compounding is why marginal cost rises, and why the answer is not just "plant the crop with the highest price." Tomatoes earn $8,800 a bed against carrots' $2,094 — but the 20th tomato bed costs roughly 6.7 times the labor per bed of the first. Say which crops you think stop because marginal cost catches the price, and which stop because they hit a bed cap.
+### What i would do with that, before the Solver runs
 
-- Say how you would know you were wrong. Two or three named outcomes. "Carrots finishing below their 20-bed cap would mean something other than diminishing returns bound first." A prediction that survives every possible result is not a prediction.
+You do not need the model to fix this. You need one more line of the arithmetic you already did.
 
-- Commit it to docs/briefs/perfect-competition-brief.md with a message that says what changed — for example, "Add perfect-competition brief with mix hypothesis."
+The 6,480-hour pool is the ceiling. Mesclun at 30 beds takes 30 × 1.25 × 36 × 1.0125^30, about 1,960 hours. Carrots at 20 take about 983. That is roughly 2,940 for two crops at their caps, leaving about 3,540 for tomatoes — and 90q × 1.1^q passes 3,540 hours somewhere around 12 beds. So the labor ceiling alone rules out your 20.
 
-### Looking ahead
+Then ask the sharper question, which is not about the ceiling at all: labor never actually runs out at the answer. It gets expensive. The bed that stops being worth planting is the one whose marginal hours cost more than the $8,800 it earns, and that happens before the hours are gone. Revise the tomato number to whatever that reasoning gives you and say which of the two — the ceiling or the price — you think stops the crop first. That is a real prediction and it is the one Stage 3 will be about.
 
-Stage 2 asks for a spec in capabilities/marginal-analysis/ before the workbook exists, then an audit of what the AI builds from it. The reasoning you put in this brief is the reasoning that spec runs on, so this is not a box to tick on the way past — it is the thinking Stage 2 is built on top of.
+### Why this is entered and what it reflects
+
+82 is a real grade on a real brief. The 37 was never a judgment about your work — it was a subject mismatch, and you fixed it in two days without being asked twice.
+
+What carried over is worth naming: the labor function with the exponent on q was correct in the mangosteen version and it is correct here, and it is still the single most commonly mangled thing in this case. Your falsification section was the best one under 80 in the cohort when it was about the wrong farm, and it is now among the better ones about the right farm. The rewrite kept the parts that were good rather than starting over, which is the right instinct.
 
 ---
 
