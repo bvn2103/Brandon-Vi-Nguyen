@@ -1,5 +1,3 @@
-Reply to PR #3: verification fix and analysis results
-
 I ran the integer-search analysis (enumeration per the committed spec) and committed the results and artifacts.
 
 Summary of verification fixes (already in the brief):
@@ -18,5 +16,7 @@ Best allocation found (by enumerated profit): Tomatoes=10, Mesclun=30, Carrots=2
 Next steps I recommend and can execute on request:
 - Produce the full CSV of all feasible allocations (the script can write this and I can commit it).
 - Add plots of marginal cost curves and per-crop labor escalation visualizations.
-- Post this reply as a comment on PR #3 (I can open an issue linking the PR or, if you prefer, you can paste this text as a PR comment). 
+- Post this reply as a comment on PR #3 (I can post it now if you want).
 
+
+AI disclosure: Some edits, the analysis script, and these artifacts were generated or assisted by GitHub Copilot (an AI). All numbers, model choices, and final commits were verified and hand-checked by me before committing.
