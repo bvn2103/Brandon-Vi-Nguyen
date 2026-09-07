@@ -26,7 +26,7 @@ Your predicted-allocation bullet says tomatoes stop at 12 because escalation cos
 
 "Insufficient budget for other crops" is a capacity argument — it says tomatoes stop because they would crowd out carrots and mesclun. Your falsification section says explicitly that capacity never binds. Drop the clause and the brief is internally airtight.
 
-### Stage 1.2 is due 6 september
+### Stage 1.2 is due 11 september
 
 Your capabilities/marginal-analysis/spec.md is a 35-byte stub and you have promised an analysis file showing the full integer search. That search is a good idea and it is also the thing that will tell you whether 12 was right.
 
