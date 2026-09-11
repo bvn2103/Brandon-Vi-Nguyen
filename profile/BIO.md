@@ -8,7 +8,7 @@ His calling to serve carried him into finance as well, where he brought the same
 
 That same drive led him to law enforcement, where he worked as a Police Officer with the Honolulu Police Department, patrolling the communities of Oahu, building trust through outreach, and de-escalating conflicts.
 
-Brandon is currently continuing his education as a Distance Learning Executive MBA student at the Shidler College of Business, University of Hawaii, part of Cohort 8, carrying his non traditional problem-solving approach into business strategy and organizational leadership.
+Brandon is currently continuing his education as a Distance Learning Executive MBA student at the Shidler College of Business, University of Hawaii, part of Cohort 8, carrying his non-traditional problem-solving approach into business strategy and organizational leadership.
 
 Brandon speaks English and Vietnamese, and he carries the same instinct for service into how he spends his time outside of work, whether that's fishing, hiking, sailing, Muay Thai, or golfing.
 

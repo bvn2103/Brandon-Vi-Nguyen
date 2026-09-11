@@ -6,7 +6,3 @@ Long-form personal profile materials live here.
 - `RESUME.md` — resume content preserved under the profile structure
 
 Canonical portfolio-checklist files remain available at the repository root as `BIO.md` and `RESUME.md`.
-
----
-
-*This directory was restored and edited with AI assistance.*
