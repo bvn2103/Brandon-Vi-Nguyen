@@ -8,6 +8,7 @@
 | 2026-09-02 | Repository Reorganization | Clean and organize root, create directory guides and READMEs | Streamlined structure with clear navigation and standards | All directories |
 | 2026-09-11 | Perfect Competition Stage 2 | Align spec, verifier, workbook, and audit deliverables | Delivered spec-first workbook, synchronized verifier outputs, and audit-ready Stage 2 capability files | `capabilities/marginal-analysis/` |
 | 2026-09-11 | Repository Restoration | Restore profile structure alongside canonical root deliverables | Reintroduced `profile/` copies for bio and resume while preserving root checklist files and verified Stage 2 artifacts remained aligned | `profile/`, `RESUME.md`, `capabilities/marginal-analysis/` |
+| 2026-09-11 | Data Directory Restoration | Recreate the missing `data/` guide directory and README | Added `data/README.md` describing repository data purpose and handling rules | `data/README.md` |
 
 ---
 
