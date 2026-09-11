@@ -118,13 +118,18 @@ def build_inputs_sheet(workbook):
         row += 1
 
     ws[f"A{row + 1}"] = "Crop"
-    ws[f"B{row + 1}"] = "Base hrs/week/bed"
-    ws[f"C{row + 1}"] = "DIM_PCT"
-    ws[f"D{row + 1}"] = "Revenue/bed"
-    ws[f"E{row + 1}"] = "Fertilizer/bed"
-    ws[f"F{row + 1}"] = "Max beds"
-    ws[f"G{row + 1}"] = "Source / notes"
-    for column in "ABCDEFG":
+    ws[f"B{row + 1}"] = "Base value"
+    ws[f"C{row + 1}"] = "Base unit"
+    ws[f"D{row + 1}"] = "DIM_PCT"
+    ws[f"E{row + 1}"] = "DIM unit"
+    ws[f"F{row + 1}"] = "Revenue value"
+    ws[f"G{row + 1}"] = "Revenue unit"
+    ws[f"H{row + 1}"] = "Fertilizer value"
+    ws[f"I{row + 1}"] = "Fertilizer unit"
+    ws[f"J{row + 1}"] = "Max beds"
+    ws[f"K{row + 1}"] = "Max unit"
+    ws[f"L{row + 1}"] = "Source / notes"
+    for column in "ABCDEFGHIJKL":
         header = ws[f"{column}{row + 1}"]
         header.fill = HEADER_FILL
         header.font = HEADER_FONT
@@ -135,54 +140,69 @@ def build_inputs_sheet(workbook):
         name = crop["name"]
         ws[f"A{crop_row}"] = name
         ws[f"B{crop_row}"] = crop["base_formula"]
-        ws[f"C{crop_row}"] = crop["dim_pct"]
-        ws[f"D{crop_row}"] = crop["revenue"]
-        ws[f"E{crop_row}"] = crop["fertilizer"]
-        ws[f"F{crop_row}"] = crop["max_beds"]
-        ws[f"G{crop_row}"] = crop["base_note"]
+        ws[f"C{crop_row}"] = "hours/week/bed"
+        ws[f"D{crop_row}"] = crop["dim_pct"]
+        ws[f"E{crop_row}"] = "decimal"
+        ws[f"F{crop_row}"] = crop["revenue"]
+        ws[f"G{crop_row}"] = "$/bed"
+        ws[f"H{crop_row}"] = crop["fertilizer"]
+        ws[f"I{crop_row}"] = "$/bed"
+        ws[f"J{crop_row}"] = crop["max_beds"]
+        ws[f"K{crop_row}"] = "beds"
+        ws[f"L{crop_row}"] = crop["base_note"]
         style(ws[f"A{crop_row}"], INPUT_FILL)
         style(ws[f"B{crop_row}"], INPUT_FILL, number_format="0.000000")
-        style(ws[f"C{crop_row}"], INPUT_FILL, number_format="0.0000%")
-        style(ws[f"D{crop_row}"], INPUT_FILL, number_format="$#,##0.00")
-        style(ws[f"E{crop_row}"], INPUT_FILL, number_format="$#,##0.00")
-        style(ws[f"F{crop_row}"], INPUT_FILL, number_format="0")
+        style(ws[f"C{crop_row}"], INPUT_FILL)
+        style(ws[f"D{crop_row}"], INPUT_FILL, number_format="0.0000%")
+        style(ws[f"E{crop_row}"], INPUT_FILL)
+        style(ws[f"F{crop_row}"], INPUT_FILL, number_format="$#,##0.00")
         style(ws[f"G{crop_row}"], INPUT_FILL)
+        style(ws[f"H{crop_row}"], INPUT_FILL, number_format="$#,##0.00")
+        style(ws[f"I{crop_row}"], INPUT_FILL)
+        style(ws[f"J{crop_row}"], INPUT_FILL, number_format="0")
+        style(ws[f"K{crop_row}"], INPUT_FILL)
+        style(ws[f"L{crop_row}"], INPUT_FILL)
 
         prefix = name
         add_name(workbook, f"{prefix}_Base_Hours_Per_Week", f"Inputs!$B${crop_row}")
-        add_name(workbook, f"{prefix}_Dim_Pct", f"Inputs!$C${crop_row}")
-        add_name(workbook, f"{prefix}_Revenue_Per_Bed", f"Inputs!$D${crop_row}")
-        add_name(workbook, f"{prefix}_Fertilizer_Per_Bed", f"Inputs!$E${crop_row}")
-        add_name(workbook, f"{prefix}_Max_Beds", f"Inputs!$F${crop_row}")
+        add_name(workbook, f"{prefix}_Dim_Pct", f"Inputs!$D${crop_row}")
+        add_name(workbook, f"{prefix}_Revenue_Per_Bed", f"Inputs!$F${crop_row}")
+        add_name(workbook, f"{prefix}_Fertilizer_Per_Bed", f"Inputs!$H${crop_row}")
+        add_name(workbook, f"{prefix}_Max_Beds", f"Inputs!$J${crop_row}")
         crop_row += 1
 
-    ws["I3"] = "Published reference checks"
-    ws["I3"].fill = HEADER_FILL
-    ws["I3"].font = HEADER_FONT
-    ws["I3"].border = BORDER
-    ws["I4"] = "Optimal mix"
-    ws["J4"] = "Tomatoes 10, Mesclun 30, Carrots 20"
-    ws["I5"] = "Published season profit"
-    ws["J5"] = PUBLISHED_PROFIT
-    ws["I6"] = "Exact script profit"
-    ws["J6"] = EXACT_PROFIT
-    for address in ("I4", "I5", "I6", "J4", "J5", "J6"):
+    ws["N3"] = "Published reference checks"
+    ws["N3"].fill = HEADER_FILL
+    ws["N3"].font = HEADER_FONT
+    ws["N3"].border = BORDER
+    ws["N4"] = "Optimal mix"
+    ws["O4"] = "Tomatoes 10, Mesclun 30, Carrots 20"
+    ws["N5"] = "Published season profit"
+    ws["O5"] = PUBLISHED_PROFIT
+    ws["N6"] = "Exact script profit"
+    ws["O6"] = EXACT_PROFIT
+    for address in ("N4", "N5", "N6", "O4", "O5", "O6"):
         style(
             ws[address],
-            NOTE_FILL if address.startswith("I") else INPUT_FILL,
-            number_format="$#,##0.00" if address in {"J5", "J6"} else None,
+            NOTE_FILL if address.startswith("N") else INPUT_FILL,
+            number_format="$#,##0.00" if address in {"O5", "O6"} else None,
         )
 
     widths = {
         "A": 26,
         "B": 16,
         "C": 12,
-        "D": 14,
-        "E": 16,
-        "F": 10,
-        "G": 28,
-        "I": 22,
-        "J": 18,
+        "D": 12,
+        "E": 12,
+        "F": 14,
+        "G": 12,
+        "H": 16,
+        "I": 14,
+        "J": 10,
+        "K": 10,
+        "L": 28,
+        "N": 22,
+        "O": 18,
     }
     for column, width in widths.items():
         ws.column_dimensions[column].width = width
@@ -310,7 +330,7 @@ def build_allocation_sheet(workbook):
     for crop_name, row in row_lookup.items():
         ws[f"A{row}"] = crop_name
         ws[f"B{row}"] = OPTIMAL_BEDS[crop_name]
-        ws[f"C{row}"] = f'=SUMIFS(Schedule_Total_Labor,Schedule_Crop,A{row},Schedule_Q,B{row})'
+        ws[f"C{row}"] = f'=IF(B{row}=0,0,{crop_name}_Base_Hours_Per_Week*Season_Weeks*B{row}*(1+{crop_name}_Dim_Pct)^B{row})'
         ws[f"D{row}"] = f"={crop_name}_Revenue_Per_Bed*B{row}"
         ws[f"E{row}"] = f"={crop_name}_Fertilizer_Per_Bed*B{row}"
         ws[f"F{row}"] = f'=IF($B$12=0,0,C{row}*$B$16)'

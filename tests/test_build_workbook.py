@@ -44,7 +44,7 @@ class BuildWorkbookTest(unittest.TestCase):
 
             self.assertEqual("=5/6", workbook["Inputs"]["B15"].value)
             self.assertEqual(
-                '=SUMIFS(Schedule_Total_Labor,Schedule_Crop,A4,Schedule_Q,B4)',
+                '=IF(B4=0,0,Tomato_Base_Hours_Per_Week*Season_Weeks*B4*(1+Tomato_Dim_Pct)^B4)',
                 workbook["Allocation"]["C4"].value,
             )
             self.assertEqual(
