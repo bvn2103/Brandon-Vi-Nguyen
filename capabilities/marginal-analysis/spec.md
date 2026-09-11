@@ -112,12 +112,13 @@ The farmer-versus-temporary split is a farm-level fact. The per-crop P&L uses th
 
 ### Solver setup
 
-The workbook must be Solver-ready in desktop Excel:
+The workbook must document the desktop Excel Solver setup explicitly:
 
 - objective: maximize `Profit`
 - changing cells: the three bed-count decision variables
 - method: `GRG Nonlinear`
 - decisions constrained to integers
+- constraints listed clearly so a reviewer can enter them in desktop Excel and rerun from `0 / 0 / 0` and `20 / 0 / 0`
 
 ## Validation rules (acceptance criteria)
 

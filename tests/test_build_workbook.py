@@ -52,8 +52,12 @@ class BuildWorkbookTest(unittest.TestCase):
                 workbook["Checks"]["D11"].value,
             )
             self.assertEqual(
-                '=IF(COUNT(H12:H32)=0,"",AGGREGATE(15,6,H12:H32/(H12:H32>0),1))',
+                '=IF(COUNT(H12:H32)=0,"",SUM(H12:H32))',
                 workbook["Labor & Cost"]["C5"].value,
+            )
+            self.assertEqual(
+                '=IF(AND(F23>G23,COUNT(H12:H22)=0),B23,"")',
+                workbook["Labor & Cost"]["H23"].value,
             )
             self.assertEqual(
                 "=Blended_Labor_Rate",

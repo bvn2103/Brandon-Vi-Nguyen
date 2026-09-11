@@ -258,7 +258,7 @@ def build_labor_sheet(workbook):
                 )
                 ws[f"F{row}"] = f"=E{row}-E{row - 1}"
                 ws[f"G{row}"] = f"={crop_name}_Revenue_Per_Bed-{crop_name}_Fertilizer_Per_Bed"
-                ws[f"H{row}"] = f'=IF(AND(F{row}>G{row},F{row - 1}<=G{row}),B{row},"")'
+                ws[f"H{row}"] = f'=IF(AND(F{row}>G{row},COUNT(H{start_row}:H{row - 1})=0),B{row},"")'
 
             style(ws[f"A{row}"], CALC_FILL)
             style(ws[f"B{row}"], CALC_FILL, number_format="0")
@@ -269,9 +269,7 @@ def build_labor_sheet(workbook):
             style(ws[f"G{row}"], CALC_FILL, number_format="$#,##0.00")
             style(ws[f"H{row}"], NOTE_FILL, number_format="0")
 
-        ws[f"C{summary_rows[crop_name]}"] = (
-            f'=IF(COUNT(H{start_row}:H{end_row})=0,"",AGGREGATE(15,6,H{start_row}:H{end_row}/(H{start_row}:H{end_row}>0),1))'
-        )
+        ws[f"C{summary_rows[crop_name]}"] = f'=IF(COUNT(H{start_row}:H{end_row})=0,"",SUM(H{start_row}:H{end_row}))'
         ws[f"D{summary_rows[crop_name]}"] = f'=IF(C{summary_rows[crop_name]}="","",C{summary_rows[crop_name]}-1)'
         style(ws[f"C{summary_rows[crop_name]}"], CALC_FILL, number_format="0")
         style(ws[f"D{summary_rows[crop_name]}"], CALC_FILL, number_format="0")
@@ -298,7 +296,7 @@ def build_allocation_sheet(workbook):
     ws.freeze_panes = "A4"
     ws["A1"] = "Allocation and Profit Roll-up"
     ws["A1"].font = Font(bold=True, size=14)
-    ws["A2"] = "Decision variables are preloaded to the audited optimum and remain Solver-ready."
+    ws["A2"] = "Decision variables are preloaded to the audited optimum; desktop Excel Solver inputs are listed below."
 
     headers = ["Crop", "Beds", "Labor hours", "Revenue", "Fertilizer", "Allocated labor cost", "Contribution after labor"]
     for idx, header in enumerate(headers, start=1):
