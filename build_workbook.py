@@ -342,7 +342,7 @@ def build_allocation_sheet(workbook):
         ("Farmer hours used", "=MIN(Farmer_Hours_Available,B12)"),
         ("Temp hours used", "=MAX(0,B12-B13)"),
         ("Total labor dollars", "=B13*Farmer_Hourly_Rate+B14*Temp_Hourly_Rate"),
-        ("Blended labor rate", '=IF(B12=0,0,B15/B12)'),
+        ("Blended labor rate ($/hour)", '=IF(B12=0,0,B15/B12)'),
         ("Fixed cost", "=Fixed_Cost"),
         ("Profit", "=D7-E7-B15-B17"),
     ]
@@ -353,9 +353,9 @@ def build_allocation_sheet(workbook):
         style(
             ws[f"B{offset}"],
             CALC_FILL,
-            number_format="$#,##0.00" if label in {"Total labor dollars", "Blended labor rate", "Fixed cost", "Profit"} else "0.00",
+            number_format="$#,##0.00" if label in {"Total labor dollars", "Fixed cost", "Profit"} else "0.00",
         )
-    ws["B16"].number_format = "$#,##0.0000"
+    ws["B16"].number_format = "0.0000"
     ws["B18"].font = Font(bold=True, size=12)
 
     ws["D11"] = "Solver setup"
@@ -468,6 +468,7 @@ def build_summary_sheet(workbook):
         ("Revenue", "=Allocation!D7"),
         ("Fertilizer", "=Allocation!E7"),
         ("Total labor dollars", "=Total_Labor_Dollars"),
+        ("Blended labor rate ($/hour)", "=Blended_Labor_Rate"),
         ("Fixed cost", "=Fixed_Cost"),
         ("Profit", "=Profit"),
     ]
@@ -482,6 +483,8 @@ def build_summary_sheet(workbook):
         )
     for cell in ("B4", "B5", "B6", "B7"):
         ws[cell].number_format = "0"
+    ws["B8"].number_format = "0.00"
+    ws["B14"].number_format = "0.0000"
 
     ws["D4"] = "Standalone P≈MC reference beds"
     ws["D4"].fill = HEADER_FILL
