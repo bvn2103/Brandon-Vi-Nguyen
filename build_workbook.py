@@ -257,7 +257,7 @@ def build_labor_sheet(workbook):
                 )
                 ws[f"F{row}"] = f"=E{row}-E{row - 1}"
                 ws[f"G{row}"] = f"={crop_name}_Revenue_Per_Bed-{crop_name}_Fertilizer_Per_Bed"
-                ws[f"H{row}"] = f'=IF(AND(F{row}>G{row},F{row - 1}<=G{row - 1}),B{row},"")'
+                ws[f"H{row}"] = f'=IF(AND(F{row}>G{row},F{row - 1}<=G{row}),B{row},"")'
 
             style(ws[f"A{row}"], CALC_FILL)
             style(ws[f"B{row}"], CALC_FILL, number_format="0")
@@ -268,7 +268,9 @@ def build_labor_sheet(workbook):
             style(ws[f"G{row}"], CALC_FILL, number_format="$#,##0.00")
             style(ws[f"H{row}"], NOTE_FILL, number_format="0")
 
-        ws[f"C{summary_rows[crop_name]}"] = f"=MIN(H{start_row}:H{end_row})"
+        ws[f"C{summary_rows[crop_name]}"] = (
+            f'=IF(COUNT(H{start_row}:H{end_row})=0,"",MINIFS(H{start_row}:H{end_row},H{start_row}:H{end_row},">0"))'
+        )
         ws[f"D{summary_rows[crop_name]}"] = f'=IF(C{summary_rows[crop_name]}="","",C{summary_rows[crop_name]}-1)'
         style(ws[f"C{summary_rows[crop_name]}"], CALC_FILL, number_format="0")
         style(ws[f"D{summary_rows[crop_name]}"], CALC_FILL, number_format="0")
@@ -435,11 +437,11 @@ def build_checks_sheet(workbook):
 
     ws.conditional_formatting.add(
         "D5:D18",
-        FormulaRule(formula=['$D5="PASS"'], fill=PASS_FILL),
+        FormulaRule(formula=['EXACT($D5,"PASS")'], fill=PASS_FILL),
     )
     ws.conditional_formatting.add(
         "D5:D18",
-        FormulaRule(formula=['$D5="FAIL"'], fill=FAIL_FILL),
+        FormulaRule(formula=['EXACT($D5,"FAIL")'], fill=FAIL_FILL),
     )
 
     widths = {"A": 30, "B": 16, "C": 16, "D": 12}
