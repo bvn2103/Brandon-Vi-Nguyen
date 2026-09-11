@@ -251,6 +251,7 @@ def build_labor_sheet(workbook):
                     f"={crop_name}_Base_Hours_Per_Week*Season_Weeks*B{row}*(1+{crop_name}_Dim_Pct)^B{row}"
                 )
                 ws[f"D{row}"] = f"=C{row}-C{row - 1}"
+                # Case convention: farmer opportunity-cost hours are consumed first, then cheaper temporary labor.
                 ws[f"E{row}"] = (
                     f"=MIN(Farmer_Hours_Available,C{row})*Farmer_Hourly_Rate+"
                     f"MAX(0,C{row}-Farmer_Hours_Available)*Temp_Hourly_Rate"
@@ -269,7 +270,7 @@ def build_labor_sheet(workbook):
             style(ws[f"H{row}"], NOTE_FILL, number_format="0")
 
         ws[f"C{summary_rows[crop_name]}"] = (
-            f'=IF(COUNT(H{start_row}:H{end_row})=0,"",MINIFS(H{start_row}:H{end_row},H{start_row}:H{end_row},">0"))'
+            f'=IF(COUNT(H{start_row}:H{end_row})=0,"",AGGREGATE(15,6,H{start_row}:H{end_row}/(H{start_row}:H{end_row}>0),1))'
         )
         ws[f"D{summary_rows[crop_name]}"] = f'=IF(C{summary_rows[crop_name]}="","",C{summary_rows[crop_name]}-1)'
         style(ws[f"C{summary_rows[crop_name]}"], CALC_FILL, number_format="0")
