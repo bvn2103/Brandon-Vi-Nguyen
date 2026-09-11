@@ -7,6 +7,7 @@
 | 2026-09-02 | Perfect Competition Brief — Stage 1.1 Revision | Fix problem statement from mangosteen orchard to 64-bed market garden with all case parameters | Complete brief with crop specs, labor rates, escalation rates, falsification checks | [briefs/perfect-competition-brief.md](./work/briefs/perfect-competition-brief.md) |
 | 2026-09-02 | Repository Reorganization | Clean and organize root, create directory guides and READMEs | Streamlined structure with clear navigation and standards | All directories |
 | 2026-09-11 | Perfect Competition Stage 2 | Align spec, verifier, workbook, and audit deliverables | Delivered spec-first workbook, synchronized verifier outputs, and audit-ready Stage 2 capability files | `capabilities/marginal-analysis/` |
+| 2026-09-11 | Repository Restoration | Restore profile structure alongside canonical root deliverables | Reintroduced `profile/` copies for bio and resume while preserving root checklist files and verified Stage 2 artifacts remained aligned | `profile/`, `RESUME.md`, `capabilities/marginal-analysis/` |
 
 ---
 
