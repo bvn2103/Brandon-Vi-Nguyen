@@ -4,6 +4,7 @@ Integer-search analysis for the perfect-competition marginal-analysis.
 Run: python3 analysis/integer_search.py
 Produces a small results summary to stdout and writes analysis/results.md
 """
+from csv import writer
 from math import isclose
 
 # Parameters
@@ -30,7 +31,7 @@ crops = {
         'max': 30,
     },
     'carrot': {
-        'base_per_week': 0.833,
+        'base_per_week': 2.5 / 3.0,
         'escalation': 0.025,
         'revenue': 2094.0,
         'fertilizer': 440.0,
@@ -110,6 +111,21 @@ with open('analysis/results.md', 'w') as f:
         for row in results_sorted[:10]:
             profit, T, M, C, total_hours, farmer_used, temp_used = row
             f.write(f'- Profit ${profit:,.2f}: T={T}, M={M}, C={C}, hours={total_hours:.2f} (farmer {farmer_used:.2f}, temp {temp_used:.2f})\n')
+
+with open('analysis/results.csv', 'w', newline='') as f:
+    csv_writer = writer(f)
+    csv_writer.writerow(['profit', 'tomato', 'mesclun', 'carrot', 'total_hours', 'farmer_hours', 'temp_hours'])
+    if best is not None:
+        profit, T, M, C, total_hours, farmer_used, temp_used = best
+        csv_writer.writerow([
+            f'{profit:.2f}',
+            T,
+            M,
+            C,
+            f'{total_hours:.2f}',
+            f'{farmer_used:.2f}',
+            f'{temp_used:.2f}',
+        ])
 
 # Print summary to stdout
 if best:
