@@ -1,5 +1,7 @@
 # Resume
 
+*Mirror of the canonical root `RESUME.md`, kept here to preserve the repository's `profile/` structure.*
+
 ## Brandon V. Nguyen
 Portland, OR 97239 | +1 (808) 444-4888 | bvn2103@columbia.edu
 

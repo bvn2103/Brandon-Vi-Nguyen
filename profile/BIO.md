@@ -1,5 +1,7 @@
 # Brandon Vi Nguyen
 
+*Mirror of the canonical root `BIO.md`, kept here to preserve the repository's `profile/` structure.*
+
 Brandon Vi Nguyen has never followed the path most people expect. He considers himself a non-traditional student of life. During his four years in the United States Air Force, serving in Cyber Operations at Wright-Patterson Air Force Base, he focused on maintaining 24/7/365 network capabilities and cyber support for the U.S. Secretary of the Air Force.
 
 When his enlistment ended, Brandon didn't step back from difficult work, he stepped toward it. He took a position as a Medical Support Technician at NewYork-Presbyterian Hospital during the height of the COVID-19 pandemic, where he monitored critical care units and served as a frontline liaison between hospital staff and patient families in hazardous conditions.
