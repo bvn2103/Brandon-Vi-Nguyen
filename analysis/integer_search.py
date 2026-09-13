@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Canonical marginal-analysis script: exhaustive integer search + workbook exactness patch.
+Canonical marginal-analysis script: exhaustive integer search.
 
 Run:
   python3 analysis/integer_search.py
@@ -10,7 +10,8 @@ What this script does:
 - Uses exact implied wage rates (50000/1440 and 25000/1440).
 - Keeps carrot base hours exact at 2.5/3.
 - Writes search outputs to analysis/results.md and analysis/results.csv.
-- Applies professor feedback fixes directly to capabilities/marginal-analysis/model.xlsx
+- Never touches capabilities/marginal-analysis/model.xlsx. An independent verifier
+  must not edit the artifact it verifies.
   so the workbook remains the primary auditable deliverable with canonical checks.
 """
 from __future__ import annotations
@@ -19,11 +20,9 @@ from csv import writer
 from math import isclose
 from pathlib import Path
 
-from openpyxl import load_workbook
 
 # Paths
 ROOT = Path(__file__).resolve().parents[1]
-WORKBOOK_PATH = ROOT / "capabilities" / "marginal-analysis" / "model.xlsx"
 
 # Parameters
 W = 36
@@ -171,52 +170,6 @@ with open(ROOT / "analysis" / "results.csv", "w", newline="") as f:
         )
 
 
-def set_if_different(cell, value):
-    if cell.value != value:
-        cell.value = value
-
-
-def apply_workbook_exactness_fixes() -> None:
-    if not WORKBOOK_PATH.exists():
-        raise FileNotFoundError(f"Workbook not found: {WORKBOOK_PATH}")
-
-    wb = load_workbook(WORKBOOK_PATH)
-
-    # Inputs sheet
-    if "Inputs" in wb.sheetnames:
-        ws = wb["Inputs"]
-        set_if_different(ws["B5"], "=50000/1440")
-        set_if_different(ws["B6"], "=25000/1440")
-        set_if_different(ws["B10"], "=2.5/3")
-
-    # Checks sheet
-    if "Checks" in wb.sheetnames:
-        ws = wb["Checks"]
-        set_if_different(ws["A9"], "Exact model target profit")
-        set_if_different(ws["B9"], 42761.66)
-        set_if_different(ws["A10"], "Published rounded reference")
-        set_if_different(ws["B10"], 42762)
-        set_if_different(ws["D11"], '=IF(ABS(C11-B11)<=0.01,"PASS","FAIL")')
-        set_if_different(ws["D12"], '=IF(ABS(C12-B12)<=0.01,"PASS","FAIL")')
-
-    # Summary sheet
-    if "Summary" in wb.sheetnames:
-        ws = wb["Summary"]
-        replacements = {
-            "A2": "Exact profit (unrounded model):",
-            "B2": 42761.66,
-            "A3": "Published rounded reference:",
-            "B3": 42762,
-        }
-        for ref, val in replacements.items():
-            set_if_different(ws[ref], val)
-
-    wb.save(WORKBOOK_PATH)
-
-
-# Apply workbook fixes as part of canonical script
-apply_workbook_exactness_fixes()
-
 # Print summary
 if best:
     profit, T, M, C, total_hours, farmer_used, temp_used = best
@@ -225,6 +178,5 @@ if best:
     print(f"Total labor hours: {total_hours:.2f}")
     print(f"Farmer hours used: {farmer_used:.2f}, Temp hours used: {temp_used:.2f}")
     print(f"Total profit: ${profit:,.2f}")
-    print(f"Workbook updated: {WORKBOOK_PATH}")
 else:
     print("No feasible allocation found within labor pools")

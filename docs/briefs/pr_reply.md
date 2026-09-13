@@ -11,7 +11,7 @@ Analysis artifacts added:
 - `analysis/results.md` — best allocation and summary (committed numeric outputs).
 - `analysis/results.csv` — CSV row for the best allocation.
 
-Best allocation found (by enumerated profit): Tomatoes=10, Mesclun=30, Carrots=20; total profit ≈ $42,774. Details in `analysis/results.md`.
+Best allocation found (by enumerated profit): Tomatoes=10, Mesclun=30, Carrots=20; total profit ≈ $42,761.66. Details in `analysis/results.md`.
 
 Next steps I recommend and can execute on request:
 - Produce the full CSV of all feasible allocations (the script can write this and I can commit it).

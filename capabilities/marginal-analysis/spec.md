@@ -140,7 +140,7 @@ The workbook must compute these checks live:
 
 - The workbook must match `analysis/integer_search.py`
 - With the exact carrot fraction, the verification script’s best allocation remains `10 / 30 / 20`
-- Exact script profit is `$42,768.33` when rounded to cents
+- Exact script profit is `$42,761.66`, which is the published `$42,762` carried to the cent
 
 ### Workbook integrity checks
 
@@ -178,6 +178,9 @@ This specification must be committed before the workbook artifact. Any clarifica
 1. **Hand-check audit** — Re-ran the tomato `q = 1`, `q = 10`, and `q = 20` labor figures against the workbook formulas and the Python verifier. This would have caught a dropped exponent, the most common structural defect in this model.
 2. **Exact-carrot audit** — Updated the verifier to use `2.5 / 3` exactly and regenerated `analysis/results.md` and `analysis/results.csv`. This would have caught a rounded carrot input silently shifting labor hours and profit.
 3. **Standalone crossing audit** — Built the standalone farmer-first marginal-cost schedules so the workbook reports last-profitable beds of tomatoes `10`, mesclun `6`, and carrots `10`. This would have caught a builder who priced all labor at one rate or reversed the permanent-versus-temporary sequence.
-4. **Published-versus-exact profit audit** — Kept the course’s published `$42,762` figure as an approximate acceptance check and the exact script profit `$42,768.33` as the precise verifier. This would have caught a workbook that matched a rounded reference while still disagreeing with the actual model.
+4. **Published-versus-exact profit audit** — Compared the course's published `$42,762` against both the verifier and the workbook. Both return `$42,761.66`, the published figure to the cent. This would have caught a workbook that matched a rounded reference while disagreeing with the model underneath it.
 5. **Formula-structure audit** — Built all calculated workbook fields as formulas and configured a dedicated `Checks` sheet. This would have caught pasted values that look right once and fail as soon as an input changes.
 6. **Stage 3 note** — The tomato standalone marginal-cost schedule dips around bed `6` before rising again. It is recorded in the workbook summary and not interpreted here.
+
+7. **Defects found and fixed, 2026-09-13** — Three defects surfaced in one audit pass. First, `Inputs!B6` and `Inputs!B8` held the wages as typed literals `34.72` and `17.36` rather than the derived `=50000/1440` and `=25000/1440`, which understated labor by `$6.67` and reported season profit as `$42,768.33`. Second, that wrong figure had been written into this spec as the exact target, so the audit was validating against the defect. Third, the `Published profit reference` check carried a tolerance of `<=10`, wide enough to return PASS on a `$6.33` miss. A check that passes when it should fail is worse than no check, and it is why the first defect survived an audit; the tolerance is now `<=0.5`. Separately, `analysis/integer_search.py` was writing into `model.xlsx` at cells `B5`, `B6` and `B10` against a layout the sheet no longer had. That coupling is removed, and the script now only searches and writes its own results files.
+
