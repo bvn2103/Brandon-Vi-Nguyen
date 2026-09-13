@@ -8,7 +8,11 @@
 | 2026-09-02 | Repository Reorganization | Clean and organize root, create directory guides and READMEs | Streamlined structure with clear navigation and standards | All directories |
 | 2026-09-11 | Perfect Competition Stage 2 | Align spec, verifier, workbook, and audit deliverables | Delivered spec-first workbook, synchronized verifier outputs, and audit-ready Stage 2 capability files | `capabilities/marginal-analysis/` |
 | 2026-09-11 | Repository Restoration | Restore profile structure alongside canonical root deliverables | Reintroduced `profile/` copies for bio and resume while preserving root checklist files and verified Stage 2 artifacts remained aligned | `profile/`, `RESUME.md`, `capabilities/marginal-analysis/` |
-
+| 2026-09-13 | Stage 2 workbook repair | Audit the committed workbook against the published check figures | Found `Inputs!B6` and `B8` holding wages as typed literals `34.72` and `17.36` rather than derived, reporting profit as $42,768.33 | Changed both to `=50000/1440` and `=25000/1440`; profit landed on $42,761.66 | `capabilities/marginal-analysis/model.xlsx` |
+| 2026-09-13 | Audit tolerance defect | Why did the profit check pass while the number was wrong? | The `Published profit reference` check used a `<=10` tolerance, wide enough to return PASS on a $6.33 miss | Tightened to `<=0.5` and recorded it as audit item 7 | `capabilities/marginal-analysis/spec.md` |
+| 2026-09-13 | Verifier corrupting the workbook | Trace why the Inputs sheet shifted by a row | `integer_search.py` was writing into `model.xlsx` at cells `B5`, `B6` and `B10` against a layout the sheet no longer had | Removed all workbook-writing code from the verifier | `analysis/integer_search.py` |
+| 2026-09-13 | Stage 3 analysis, MC dip | Drafted my own explanation, then asked for critique | My draft had the cheap and expensive hours inverted: I treated the farmer's own time as free when it costs $34.72 against a temp's $17.36 | Rewrote the passage with the labels corrected; kept my own opening and closing lines | `analysis/perfect-competition-analysis.md` |
+| 2026-09-13 | Stage 3 hypothesis comparison | Estimated the cost of my mesclun miss as $2,460 | Wrong method: I multiplied the $246 shadow price by ten beds, but a shadow price prices only the next bed. Beds 21 to 30 decline from $555 to $280 and total $4,210 | Corrected the figure and the reasoning about why it was wrong | `analysis/perfect-competition-analysis.md` |
 ---
 
 *This log was created and edited with AI assistance.*
