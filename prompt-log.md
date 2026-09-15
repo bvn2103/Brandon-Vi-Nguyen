@@ -18,7 +18,7 @@
 
 This log was created and edited with AI assistance.
 
-#Perfect Competition Reflection
+# Perfect Competition Reflection
 
 I'm not going to lie, I used AI for everything. I pasted the Kumu instructions into Claude and Copilot and let them build the repo, workbook and scripts, until it became a beast of its own. Then I would paste professor feedback into both and wait for a version to come back hopefully fixed. It was like magic and I had no idea what was happening. The numbers meant nothing. $8,249, $42,762, a 10% escalation per bed. How was this supposed to teach me economics? Every round of feedback I fed the beast moved more figures I did not understand, so I could not tell when it was wrong. Thank God for the deliverables and the "check yourself" section on Kumu, or I would have had no foundation.
 
