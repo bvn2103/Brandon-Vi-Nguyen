@@ -7,7 +7,7 @@ updated: 2026-09-11
 
 ## Objective
 
-Produce an auditable Excel workbook at `capabilities/marginal-analysis/model.xlsx` that models the farm allocation decision exactly as specified here. This specification is the build contract: the workbook must be generated from it, the workbook must remain consistent with it, and the audit findings must be appended here after validation.
+Produce an auditable Excel workbook at `capabilities/marginal-analysis/model.xlsx` that models the farm allocation decision exactly as specified here. This specification is the build contract: the workbook, verifier, and audit notes must all stay aligned with it.
 
 ## Inputs (named contract)
 
@@ -175,15 +175,17 @@ This specification must be committed before the workbook artifact. Any clarifica
 
 ### Audit dated 2026-09-11
 
-1. **Hand-check audit** — Re-ran the tomato `q = 1`, `q = 10`, and `q = 20` labor figures against the workbook formulas and the Python verifier. This would have caught a dropped exponent, the most common structural defect in this model.
-2. **Exact-carrot audit** — Updated the verifier to use `2.5 / 3` exactly and regenerated `analysis/results.md` and `analysis/results.csv`. This would have caught a rounded carrot input silently shifting labor hours and profit.
-3. **Standalone crossing audit** — Built the standalone farmer-first marginal-cost schedules so the workbook reports last-profitable beds of tomatoes `10`, mesclun `6`, and carrots `10`. This would have caught a builder who priced all labor at one rate or reversed the permanent-versus-temporary sequence.
-4. **Published-versus-exact profit audit** — Compared the course's published `$42,762` against both the verifier and the workbook. Both return `$42,761.66`, the published figure to the cent. This would have caught a workbook that matched a rounded reference while disagreeing with the model underneath it.
-5. **Formula-structure audit** — Built all calculated workbook fields as formulas and configured a dedicated `Checks` sheet. This would have caught pasted values that look right once and fail as soon as an input changes.
+1. **Hand-check audit** — Re-ran the tomato `q = 1`, `q = 10`, and `q = 20` labor figures against the workbook formulas and the Python verifier. This would have caught a dropped exponent, the m[...]
+2. **Exact-carrot audit** — Updated the verifier to use `2.5 / 3` exactly and regenerated `analysis/results.md` and `analysis/results.csv`. This would have caught a rounded carrot input silentl[...]
+3. **Standalone crossing audit** — Built the standalone farmer-first marginal-cost schedules so the workbook reports last-profitable beds of tomatoes `10`, mesclun `6`, and carrots `10`. This w[...]
+4. **Published-versus-exact profit audit** — Compared the course's published `$42,762` against both the verifier and the workbook. Both return `$42,761.66`, the published figure to the cent. Th[...]
+5. **Formula-structure audit** — Built all calculated workbook fields as formulas and configured a dedicated `Checks` sheet. This would have caught pasted values that look right once and fail a[...]
 6. **Stage 3 note** — The tomato standalone marginal-cost schedule dips around bed `6` before rising again. It is recorded in the workbook summary and not interpreted here.
 
-7. **Defects found and fixed, 2026-09-13** — Three defects surfaced in one audit pass. First, `Inputs!B6` and `Inputs!B8` held the wages as typed literals `34.72` and `17.36` rather than the derived `=50000/1440` and `=25000/1440`, which understated labor by `$6.67` and reported season profit as `$42,768.33`. Second, that wrong figure had been written into this spec as the exact target, so the audit was validating against the defect. Third, the `Published profit reference` check carried a tolerance of `<=10`, wide enough to return PASS on a `$6.33` miss. A check that passes when it should fail is worse than no check, and it is why the first defect survived an audit; the tolerance is now `<=0.5`. Separately, `analysis/integer_search.py` was writing into `model.xlsx` at cells `B5`, `B6` and `B10` against a layout the sheet no longer had. That coupling is removed, and the script now only searches and writes its own results files.
+7. **Defects found and fixed, 2026-09-13** — Three defects surfaced in one audit pass. First, `Inputs!B6` and `Inputs!B8` held the wages as typed literals `34.72` and `17.36` rather than the de[...]
 
-8. **Independent cross-check of intermediate marginal costs, 2026-09-13** — Recomputed the tomato standalone marginal-cost schedule outside the workbook, from the case parameters alone, and compared bed by bed against the figures the case README publishes. Bed 5 `$7,661`, bed 6 `$4,906`, bed 10 `$8,249`, bed 11 `$9,391`: all four agree to the dollar, and the standalone crossings land at tomatoes `10`, carrots `10`, mesclun `6`. This would have caught a schedule that produced the right optimum from a wrong cost curve, which the aggregate profit check alone cannot see.
+8. **Independent cross-check of intermediate marginal costs, 2026-09-13** — Recomputed the tomato standalone marginal-cost schedule outside the workbook, from the case parameters alone, and com[...]
+
+9. **Global optimality rather than Solver path-dependence, 2026-09-13** — The standard check here is running Solver from 0/0/0 and 20/0/0 to see whether a local method gets stuck. I used a stronger check instead: `analysis/integer_search.py` enumerates every feasible integer allocation of the three crops under the bed caps, the 64-bed limit, and the 5,760-hour temporary pool, and returns 10 tomato / 30 mesclun / 20 carrot at `$42,761.66` as the global maximum. Exhaustive enumeration makes local optima moot, so path-dependence cannot hide a better answer. Worth noting that the 20/0/0 starting point is itself infeasible: 20 tomato beds alone demand 12,109 labor hours against a total pool of 6,480, so any solver starting there must first climb back into the feasible region.
 
 
