@@ -14,3 +14,14 @@
 | 2026-09-13 | Stage 3 analysis, MC dip | Drafted my own explanation, then asked for critique | My draft had the cheap and expensive hours inverted: I treated the farmer's own time as free when it[...]
 | 2026-09-13 | Stage 3 hypothesis comparison | Estimated the cost of my mesclun miss as $2,460 | Wrong method: I multiplied the $246 shadow price by ten beds, but a shadow price prices only the ne[...]
 | ---
+
+
+This log was created and edited with AI assistance.
+
+#Perfect Competition Reflection
+
+I'm not going to lie, I used AI for everything. I pasted the Kumu instructions into Claude and Copilot and let them build the repo, workbook and scripts, until it became a beast of its own. Then I would paste professor feedback into both and wait for a version to come back hopefully fixed. It was like magic and I had no idea what was happening. The numbers meant nothing. $8,249, $42,762, a 10% escalation per bed. How was this supposed to teach me economics? Every round of feedback I fed the beast moved more figures I did not understand, so I could not tell when it was wrong. Thank God for the deliverables and the "check yourself" section on Kumu, or I would have had no foundation.
+
+After hours going back and forth, cycling through models, breaking things, scolding them, and finally asking WHY instead of pushing the fix, somewhere in the insanity the numbers got familiar. It was as if my brain could understand a whole new language. The check yourself section gave me something to test against. The tenth tomato bed costs $8,249 and the eleventh $9,391 against a $8,800 price, so I hunted those cells down in the workbook, and BEHOLD. There it was. The eureka of “trust, but verify.” We can only correct things we understand.
+
+The clearest case of AI being wrong came from a script it wrote to verify my own workbook. It was constantly editing the file it was supposed to be checking, writing values into cells that had moved, and then reporting PASS. With AI, nothing looked broken. I had to open the model and audit it myself until the numbers matched the deliverables. We truly are living in an exponential digital age. Either become AI native or get left behind.
